@@ -1,11 +1,19 @@
-# Core-ML-Algorithms-From-Scratch
-Coding core machine learning algorithms from scratch, using only scientific computing libraries like NumPy. Currently, locally implementing the following algorithms from scratch:
-- Linear Regression using Stochastic Gradient Descent
+# Core Machine Learning Algorithms From Scratch:
+Building core machine learning algorithms from the ground up using only fundamental scientific computing libraries such as NumPy — no high-level frameworks like PyTorch, TensorFlow, or scikit-learn. This project is focused on deepening theoretical understanding and building intuition by implementing each algorithm from scratch and deriving key equations and update rules manually.
+--------------------
+### Algorithms Implemented / In Progress:
+- Linear Regression (using Stochastic Gradient Descent)
 - Logistic Regression
+- Decision Trees
 - Random Forest
 - XGBoost Classifier
 - XGBoost Regressor
-- K-means
-- Decision Trees
-
-**Will keep updating the repository, and include equations and graphs for background theory on the above algorithms**
+- K-Means Clustering
+-----------------------
+### Each implementation is paired with:
+- Mathematical derivations and loss functions
+- Gradient updates (where applicable)
+- Visualizations of decision boundaries, convergence curves, and more
+-----------------------
+**This repository will be continually updated with more algorithms, theoretical explanations, and annotated visualizations.**
+----------------------
