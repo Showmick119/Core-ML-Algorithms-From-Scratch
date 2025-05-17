@@ -1,6 +1,7 @@
 # Core Machine Learning Algorithms From Scratch:
+---
 Building core machine learning algorithms from the ground up using only fundamental scientific computing libraries such as NumPy — no high-level frameworks like PyTorch, TensorFlow, or scikit-learn. This project is focused on deepening theoretical understanding and building intuition by implementing each algorithm from scratch and deriving key equations and update rules manually.
-----
+---
 - Linear Regression using Stochastic Gradient Descent
 - Logistic Regression
 - Random Forest
