@@ -15,4 +15,5 @@ Building core machine learning algorithms from the ground up using only fundamen
 - Gradient updates (where applicable)
 - Visualizations of decision boundaries, convergence curves, and more
 
-**This repository will be continually updated with algorithms, theoretical explanations, and annotated visualizations.**
+### Side Note:
+- **This repository will be continually updated with algorithms, theoretical explanations, and annotated visualizations.**
