@@ -37,7 +37,18 @@ class MyLinearRegression:
         return cost
 
     def _compute_gradient(self, X: np.ndarray, y: np.ndarray) -> float:
-        x = 2
+        m = X.shape[0]
+        y_pred = self.predict(X)
+        dj_db = 0
+        dj_dw = 0
+
+        for i in range(m):
+            dj_db += (y_pred[i] - y[i])
+            dj_dw += (y_pred[i] - y[i]) * X[i]
+        dj_db *= (1 / m)
+        dj_dw *= (1 / m)
+
+        return dj_dw, dj_db
 
     def _gradient_descent(self, X, y) -> float:
         x = 2
