@@ -1,3 +1,5 @@
+import numpy as np
+
 class MyLinearRegression:
     def __init__(self, learning_rate=0.01, n_features=5):
         self.learning_rate = learning_rate
