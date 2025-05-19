@@ -5,8 +5,6 @@ class MyLinearRegression:
         self.learning_rate = learning_rate
         self.num_iterations = num_iterations
         self.normalize = normalize
-        self.loss_history = []
-        self.parameter_history = []
         self.weights = None
         self.bias = None
 
@@ -51,7 +49,8 @@ class MyLinearRegression:
         return dj_dw, dj_db
 
     def _gradient_descent(self, X: np.ndarray, y: np.ndarray) -> float:
-        x = 2
+        self.cost_function_history = []
+        self.parameter_history = []
     
     def _normalize_features(self, X: np.ndarray) -> np.ndarray:
         self.column_std = np.std(X, axis=0)
