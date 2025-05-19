@@ -1,4 +1,6 @@
 import numpy as np
+import math
+from typing import Tuple
 
 class MyLinearRegression:
     def __init__(self, learning_rate=0.01, num_iterations=1000, normalize=True):
@@ -34,24 +36,40 @@ class MyLinearRegression:
 
         return cost
 
-    def _compute_gradient(self, X: np.ndarray, y: np.ndarray) -> float:
-        m = X.shape[0]
+    def _compute_gradient(self, X: np.ndarray, y: np.ndarray) -> Tuple[float, np.ndarray]:
+        m, n = X.shape
         y_pred = self.predict(X)
-        dj_db = 0
-        dj_dw = 0
+
+        dj_db = 0.0
+        dj_dw = np.zeros((m,))
 
         for i in range(m):
             dj_db += (y_pred[i] - y[i])
-            dj_dw += (y_pred[i] - y[i]) * X[i]
+            for j in range(n):
+                dj_dw[j] = (y_pred[i] - y[i]) * X[i][j]
         dj_db *= (1 / m)
         dj_dw *= (1 / m)
 
-        return dj_dw, dj_db
+        return dj_db, dj_dw
 
     def _gradient_descent(self, X: np.ndarray, y: np.ndarray) -> float:
-        self.cost_function_history = []
+        self.cost_history = []
         self.parameter_history = []
-    
+
+        for i in range(self.num_iterations):
+            dj_dw, dj_db = self._compute_gradient(X, y)
+
+            self.weights = self.weights - self.learning_rate * dj_dw
+            self.bias = self.bias - self.learning_rate * dj_db
+
+            self.cost_history.append(self._compute_cost(X, y))
+            self.parameter_history.append((self.weights, self.bias))
+
+            if i % math.ceil(self.num_iterations / 10) == 0:
+                print(f"Iteration {i:4d}: Cost {self.cost_history[-1]:8.2f}")
+        
+        return self.weights, self.bias, self.cost_history, self.parameter_history
+
     def _normalize_features(self, X: np.ndarray) -> np.ndarray:
         self.column_std = np.std(X, axis=0)
         self.column_mean = np.mean(X, axis=0)
