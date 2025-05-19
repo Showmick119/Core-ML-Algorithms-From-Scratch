@@ -13,7 +13,9 @@ class MyLinearRegression:
     def fit(self, X: np.ndarray, y: np.ndarray) -> None:
         if self.normalize == True:
             X_normalized = self._normalize_features(X)
-        
+        else:
+            X_normalized = X
+
         self.weights, self.bias = self._gradient_descent(X_normalized, y)
 
         return self
@@ -34,18 +36,32 @@ class MyLinearRegression:
 
     def _compute_cost(self, X: np.ndarray, y: np.ndarray) -> float:
         cost = 0.0
-        y_pred = self.predict(X)
-        m = y_pred.shape[0]
+        m = X.shape[0]
+        y_pred = np.zeros((m,))
+
+        if self.normalize == True:
+            X_normalized = self._normalize_features(X)
+        else:
+            X_normalized = X
 
         for i in range(m):
+            y_pred[i] = np.dot(X_normalized[i][:], self.weights) + self.bias
             cost += (y_pred[i] - y[i]) ** 2
-        cost *= (1 / 2 * m)
+        cost *= (1 / 2* m)
 
         return cost
 
     def _compute_gradient(self, X: np.ndarray, y: np.ndarray) -> Tuple[float, np.ndarray]:
         m, n = X.shape
-        y_pred = self.predict(X)
+        y_pred = np.zeros((m,))
+
+        if self.normalize == True:
+            X_normalized = self._normalize_features(X)
+        else:
+            X_normalized = X
+
+        for i in range(m):
+            y_pred[i] = np.dot(X_normalized[i][:], self.weights) + self.bias
 
         dj_db = 0.0
         dj_dw = np.zeros((n,))
