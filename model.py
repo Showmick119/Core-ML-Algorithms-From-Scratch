@@ -24,8 +24,15 @@ class MyLinearRegression:
         return y_pred
 
     def _compute_cost(self, X, y) -> float:
-        m, n = X.shape
+        cost = 0
         y_pred = self.predict(X)
+        m = y_pred.shape[0]
+
+        for i in range(m):
+            cost += (y_pred[i] - y[i]) ** 2
+        cost *= (1 / 2 * m)
+
+        return cost
 
     def gradient_descent(self) -> float:
         x = 2
