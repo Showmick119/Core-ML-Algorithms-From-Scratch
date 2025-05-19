@@ -1,9 +1,12 @@
 import numpy as np
 
 class MyLinearRegression:
-    def __init__(self, learning_rate=0.01, n_features=5):
+    def __init__(self, learning_rate=0.01, num_iterations=1000, normalize=True):
         self.learning_rate = learning_rate
-        self.n_features = n_features
+        self.num_iterations = num_iterations
+        self.normalize = normalize
+        self.weights = None
+        self.bias = None
 
     def fit(self) -> None:
         x = 2
