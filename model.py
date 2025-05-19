@@ -10,7 +10,7 @@ class MyLinearRegression:
         self.weights = None
         self.bias = None
 
-    def fit(self, X, y) -> None:
+    def fit(self, X: np.ndarray, y: np.ndarray) -> None:
         x = 2
 
     def predict(self, X: np.ndarray) -> np.ndarray:
@@ -50,7 +50,7 @@ class MyLinearRegression:
 
         return dj_dw, dj_db
 
-    def _gradient_descent(self, X, y) -> float:
+    def _gradient_descent(self, X: np.ndarray, y: np.ndarray) -> float:
         x = 2
     
     def _normalize_features(self, X: np.ndarray) -> np.ndarray:
