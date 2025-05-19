@@ -53,15 +53,18 @@ class MyLinearRegression:
         for i in range(m):
             dj_db += (y_pred[i] - y[i])
             for j in range(n):
-                dj_dw[j] = (y_pred[i] - y[i]) * X[i][j]
+                dj_dw[j] += (y_pred[i] - y[i]) * X[i][j]
         dj_db *= (1 / m)
         dj_dw *= (1 / m)
 
         return dj_db, dj_dw
 
     def _gradient_descent(self, X: np.ndarray, y: np.ndarray) -> Tuple[np.ndarray, float]:
+        n = X.shape[1]
         self.cost_history = []
         self.parameter_history = []
+        self.weights = np.zeros(n)
+        self.bias = 0.0
 
         for i in range(self.num_iterations):
             dj_dw, dj_db = self._compute_gradient(X, y)
@@ -78,7 +81,8 @@ class MyLinearRegression:
         return self.weights, self.bias
 
     def _normalize_features(self, X: np.ndarray) -> np.ndarray:
-        self.column_std = np.std(X, axis=0)
-        self.column_mean = np.mean(X, axis=0)
+        if not hasattr(self, 'column_mean'):
+            self.column_std = np.std(X, axis=0)
+            self.column_mean = np.mean(X, axis=0)
 
         return (X - self.column_mean) / (self.column_std)
