@@ -2,3 +2,4 @@ numpy
 math
 typing
 pandas
+sklearn
