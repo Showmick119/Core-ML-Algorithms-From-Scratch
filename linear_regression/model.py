@@ -10,7 +10,7 @@ class MyLinearRegression:
         self.weights = None
         self.bias = None
 
-    def fit(self, X: np.ndarray, y: np.ndarray) -> None:
+    def fit(self, X: np.ndarray, y: np.ndarray) -> "MyLinearRegression":
         if self.normalize == True:
             X_normalized = self._normalize_features(X)
         else:
@@ -39,29 +39,19 @@ class MyLinearRegression:
         m = X.shape[0]
         y_pred = np.zeros((m,))
 
-        if self.normalize == True:
-            X_normalized = self._normalize_features(X)
-        else:
-            X_normalized = X
-
         for i in range(m):
-            y_pred[i] = np.dot(X_normalized[i][:], self.weights) + self.bias
+            y_pred[i] = np.dot(X[i][:], self.weights) + self.bias
             cost += (y_pred[i] - y[i]) ** 2
-        cost *= (1 / 2* m)
+        cost /= (2 * m)
 
         return cost
 
-    def _compute_gradient(self, X: np.ndarray, y: np.ndarray) -> Tuple[float, np.ndarray]:
+    def _compute_gradient(self, X: np.ndarray, y: np.ndarray) -> Tuple[np.ndarray, float]:
         m, n = X.shape
         y_pred = np.zeros((m,))
 
-        if self.normalize == True:
-            X_normalized = self._normalize_features(X)
-        else:
-            X_normalized = X
-
         for i in range(m):
-            y_pred[i] = np.dot(X_normalized[i][:], self.weights) + self.bias
+            y_pred[i] = np.dot(X[i][:], self.weights) + self.bias
 
         dj_db = 0.0
         dj_dw = np.zeros((n,))
@@ -73,7 +63,7 @@ class MyLinearRegression:
         dj_db *= (1 / m)
         dj_dw *= (1 / m)
 
-        return dj_db, dj_dw
+        return dj_dw, dj_db
 
     def _gradient_descent(self, X: np.ndarray, y: np.ndarray) -> Tuple[np.ndarray, float]:
         n = X.shape[1]
@@ -89,7 +79,7 @@ class MyLinearRegression:
             self.bias = self.bias - self.learning_rate * dj_db
 
             self.cost_history.append(self._compute_cost(X, y))
-            self.parameter_history.append((self.weights, self.bias))
+            self.parameter_history.append((self.weights.copy(), self.bias))
 
             if i % math.ceil(self.num_iterations / 10) == 0:
                 print(f"Iteration {i:4d}: Cost {self.cost_history[-1]:8.2f}")
