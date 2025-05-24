@@ -17,3 +17,4 @@ Building core machine learning algorithms from the ground up using only fundamen
 
 ### Side Note:
 - *This repository will be continually updated with algorithms, theoretical explanations, and annotated visualizations.*
+- *Code is being tested for robustness using tools like unittest.*
