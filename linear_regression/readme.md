@@ -3,7 +3,7 @@
 ### Concepts Implemented
 - Stochastic Gradient Descent
 - Cost Functions
-- Feature Scaling with Zscore Normalization
+- Feature Scaling Using Zscore Normalization
 - Regularization
 - Learning Rate Selection
 - Lambda Selection
