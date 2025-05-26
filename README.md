@@ -8,7 +8,7 @@ Building core machine learning algorithms from the ground up using only fundamen
 - K-Means Clustering
 
 ### Implementations Of Practical Use Cases:
-- Recommender Systems
+- Recommender System
 - Anomaly Detection
 
 ### Each Implementation Is Paired With:
