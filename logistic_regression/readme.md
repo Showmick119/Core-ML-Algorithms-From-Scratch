@@ -1,4 +1,5 @@
 ## Logistic Regression
-Concepts Implemented
+**Concepts Implemented**
 - Decision Boundary
   - Differentiates between True and False classes
+- Batch Gradient Descent
