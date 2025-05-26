@@ -5,10 +5,9 @@ Building core machine learning algorithms from the ground up using only fundamen
 - Linear Regression (using Stochastic Gradient Descent)
 - Logistic Regression
 - Decision Trees
-- Random Forest
-- XGBoost Classifier
-- XGBoost Regressor
 - K-Means Clustering
+- Recommender Systems
+- Anomaly Detection
 
 ### Each Implementation Is Paired With:
 - Mathematical derivations and loss functions
