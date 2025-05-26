@@ -7,7 +7,7 @@ Building core machine learning algorithms from the ground up using only fundamen
 - Decision Trees
 - K-Means Clustering
 
-### Examples Of Practical Use Cases:
+### Implementations Of Practical Use Cases:
 - Recommender Systems
 - Anomaly Detection
 
